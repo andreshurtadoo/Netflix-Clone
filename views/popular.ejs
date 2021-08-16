@@ -1,0 +1,13 @@
+<%- include('template/header.ejs'), {title}  %> 
+
+<% newMovies.forEach(movie => { %>
+    <% const path = movie.backdrop_path %> 
+    <% const url = `https://image.tmdb.org/t/p/original${path}` %> 
+    <ul>
+        <li>
+           <p> <%= url %>  </p>
+        </li>
+    </ul>
+<% }) %>
+
+<%- include('template/footer.ejs')  %> 

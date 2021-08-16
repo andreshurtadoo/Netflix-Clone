@@ -1,0 +1,16 @@
+{
+  "name": "movies",
+  "description": "conection to the api of movie db",
+  "main": "conection.js",
+  "scripts": {
+    "start": "nodemon conection"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.12"
+  }
+}
+
