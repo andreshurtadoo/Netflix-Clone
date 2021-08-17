@@ -2,28 +2,14 @@ const express = require('express')
 const api = express.Router()
 const moviesCtrl = require('../controller/reqHttp')
 
-api.get('/', moviesCtrl.setMovies)
+api.get('/', moviesCtrl.setNewMovies)
 
-api.get('/popular', moviesCtrl.popular)
+api.get('/popular', moviesCtrl.setPopularMovies)
 
-api.get('/search', (req, res) => {
-    res.status(200).render('search', {
-       title:'Search any movie'
-    })
-})
+api.get('/search')
 
-api.get('/premieres', (req, res) => {
-    res.status(200).render('premieres', {
-        title:'Latest movies'
-    })
-})
+api.get('/nowPlaying')
 
-api.get('/movie/:id', (req, res) => {
-    const id = req.params.id
-    res.status(200).render('movie', {
-        title:'Any movie',
-        id
-    })
-})
+api.get('/movie/:id')
 
 module.exports = api

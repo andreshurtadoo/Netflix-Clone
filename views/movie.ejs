@@ -1,5 +1,8 @@
 <%- include('template/header.ejs'), {title}  %> 
 
-<h1> <%= id  %>  </h1>
+<% movie.forEach(element => { %>
+ <h1> <%= element.id  %>  </h1>
+ <h1> <%= element.title  %>  </h1>
+<% }) %>
 
 <%- include('template/footer.ejs')  %> 
