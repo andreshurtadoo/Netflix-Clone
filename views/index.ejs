@@ -13,7 +13,7 @@
         <div class="carousel-caption">
             <h5> <%= movie.title %>  </h5>
             <p> <%= movie.overview %>  </p>
-            <a href="/movie/<%= movie.id %> " target="_blank" rel="noopener noreferrer" class="btn btn-primary">Mas informacion</a>
+            <a href="/<%= movie.id %> " target="_blank" rel="noopener noreferrer" class="btn btn-primary">More Information</a>
         </div>
       </div>
       <% } %>
@@ -24,7 +24,7 @@
           <div class="carousel-caption">
               <h5> <%= movie.title %>  </h5>
               <p> <%= movie.overview %>  </p>
-              <a href="/movie/<%= movie.id %> " target="_blank" rel="noopener noreferrer" class="btn btn-primary">Mas informacion</a>
+              <a href="/<%= movie.id %> " target="_blank" rel="noopener noreferrer" class="btn btn-primary">More Information</a>
           </div>
         </div>
       <% } %>
@@ -45,7 +45,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6 now-playing">
-      <h2>Peliculas Populares</h2>
+      <h2>Popular Movies</h2>
       <ul class="list-group list-group-flush now-playing__list">
 
         <% popularMovies.forEach((movie, index) => { %>
@@ -55,7 +55,7 @@
             <li class="list-group-item">
                <img src="<%= url %>" alt="<%= movie.title %> ">
                <h3><%= movie.title %> </h3>
-               <a href="#" class="btn btn-primary">ver mas</a>
+               <a href="/<%= movie.id %> " target="_blank" rel="noopener noreferrer" class="btn btn-primary">Show more</a>
             </li>
           <% } %>
         <% }) %>    
@@ -63,8 +63,23 @@
       </ul>
     </div>
 
-    <div class="col-6">
-      <h2>Mejores Puntuadas</h2>
+    <div class="col-6 now-playing">
+      <h2>Best Reted</h2>
+      <ul class="list-group list-group-flush now-playing__list">
+
+        <% topRated.forEach((movie, index) => { %>
+          <% const path = movie.poster_path %> 
+          <% const url = `https://image.tmdb.org/t/p/original${path}` %>
+          <% if (index < 6) { %>
+            <li class="list-group-item">
+               <img src="<%= url %>" alt="<%= movie.title %> ">
+               <h3><%= movie.title %> </h3>
+               <a href="/<%= movie.id %> " target="_blank" rel="noopener noreferrer" class="btn btn-primary">Show more</a>
+            </li>
+          <% } %>
+        <% }) %>    
+
+      </ul>
     </div>
   </div>
 </div>

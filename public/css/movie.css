@@ -1,0 +1,24 @@
+.main{
+    position: relative;
+}
+
+.main .main-background img {
+    height: 100vh;
+    width: 100%;
+    filter: brightness(40%);
+    position: absolute;
+}
+
+.main .main-poster img{
+    height: 80vh;
+    width: 25%;
+    margin-top: 70px;
+    left: 100px;
+    border-radius: 15px;
+    cursor: pointer;
+    position: absolute;
+}
+
+.main .main-poster img:hover {
+    filter: brightness(40%);
+}
