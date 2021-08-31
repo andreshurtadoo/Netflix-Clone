@@ -1,5 +1,48 @@
 <%- include('template/header.ejs'), {title}  %> 
 
 <h1> Peliculas nuevas </h1>
+<!-- <button class="btn bg-primary taiser-btn" data-toggle="modal" data-target="#video-teaser">Ver Teaser</button>
+
+
+<div class="modal fade" id="video-teaser" tabindex="-1" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+                 <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                 <div class="video-teaser-iframe"></div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+
+  <a href="#" type="button" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fas fa-play"></i>
+      Ver trailer
+  </a>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3>Holaaa</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>  
+
 
 <%- include('template/footer.ejs')  %> 

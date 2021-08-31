@@ -4,8 +4,8 @@ require('dotenv').config()
 const url_path = process.env.URL_PATH;
 const api_key = process.env.API_KEY;
 
-const getMovies = (type) => {
-    const url = `${url_path}/3/movie/${type}?api_key=${api_key}&language=en-US&page=1`
+const getMovies = (type, language, page) => {
+    const url = `${url_path}/3/movie/${type}?api_key=${api_key}&language=${language}&page=${page}`
     return fetch(url)
     .then(response => response.json())
     .then(result => result.results)
@@ -13,7 +13,9 @@ const getMovies = (type) => {
 }
 
 async function setAllMovies (req, res) {
-    const movies = await getMovies('now_playing')
+    const { language='en' , page=1 } = req.query
+
+    const movies = await getMovies('now_playing', language, page)
     const popularMovies = await getMovies('popular')
     const topRated = await getMovies('top_rated')
     res.render('index',{
@@ -24,18 +26,18 @@ async function setAllMovies (req, res) {
     })
 }
 
+async function setNowPlaying (req, res) {
+    const movies = await getMovies('now_playing')
+    res.render('nowPlaying', {
+        title:'Now Playing'
+    })
+}
+
 async function setPopularMovies (req, res) {
     const movies = await getMovies('popular')
     res.render('popular',{
         title:'Popular Movies',
         movies
-    })
-}
-
-async function setNowPlaying (req, res) {
-    const movies = await getMovies('now_playing')
-    res.render('nowPlaying', {
-        title:'Now Playing'
     })
 }
 

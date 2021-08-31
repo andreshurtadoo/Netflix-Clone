@@ -19,17 +19,72 @@
     <% const url2 = `https://image.tmdb.org/t/p/original${poster}` %> 
 
     <div class="main">
-
         <div class="main-background">
             <img src="<%= url %>" class="img-fluid movie_background-img" alt="<%= movie.original_title %>">
         </div>
 
         <div class="main-poster">
-            <img src="<%= url2 %> " class="img-fluid movie_background-img" alt="<%= movie.original_title %>">
-        </div>
+            <div class="row">
+                <!-- Poster -->
+                <div class="col-5">
+                    <img src="<%= url2 %> " class="img-fluid movie_background-img" alt="<%= movie.original_title %>">
+                </div>
 
+                <div class="col-7 info">
+                    <h1>
+                        <%= movie.title %> 
+                        <% let yearMovie = movie.release_date %>
+                        <% let year = yearMovie.split('-') %>  
+                        <span class="date">(<%= year[0] %>)</span>
+                        <a href="#" type="button" class="buttonTaiser" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="fas fa-play" alt=">"></i>
+                              Replay taiser
+                        </a>
+                          
+                    </h1>
+                    <h5 class="overview"><%= movie.overview %> </h5>
+                    <h3 class="subTitle">Genres</h3>
+                    <ul>
+                        <% let genres = movie.genres %> 
+                        <% genres.forEach(element => { %>
+                            <li><%= element.name  %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+
+              <% teaser.forEach(element => { %>
+                <% if (element.type == 'Teaser') { %>
+
+                    <% const path = element.key %> 
+                    <% const url = `https://www.youtube.com/embed/${path}` %>
+                    <iframe
+                    id="ytplayer" 
+                    type="text/html" 
+                    width="640" 
+                    height="360"
+                    src="<%= url %> "
+                    frameborder="0"
+                    >
+                    </iframe>
+                <% } %>
+              <% }) %> 
+
+            </div>
+          </div>
+        </div>
+    </div> 
+    
+    <script src="https://kit.fontawesome.com/8d04d5d86b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
 </html>

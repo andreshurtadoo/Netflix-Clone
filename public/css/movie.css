@@ -19,6 +19,58 @@
     position: absolute;
 }
 
-.main .main-poster img:hover {
+.main .main-poster img, .buttonTaiser:hover {
     filter: brightness(40%);
 }
+
+.main .main-poster .info {
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    margin-top: 25rem;
+    left: 35rem;
+}
+
+.main .main-poster .info h1 {
+    font-weight: 700;
+}
+
+.main .main-poster .info span {
+    font-size: 20px;
+}
+
+.main .main-poster .info .date, .taiser, .overview{
+    font-weight: lighter;
+}
+
+.main .main-poster .info .buttonTaiser{
+    float:right;
+    font-size: 15px;
+    color: #fff;
+    width: auto;
+    height: auto;
+    font-weight: 600;
+    transition: linear .1s;
+    text-decoration: none;
+}
+
+.subtitle{
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+.main .main-poster .info ul {
+    list-style: none;
+}
+
+.main .main-poster .info ul li {
+    float: left;
+    padding-left: 50px;
+    font-weight: lighter;
+}
+
+.modal .modal-dialog .modal-content {
+    background: none;
+}
+
+
