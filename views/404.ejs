@@ -1,5 +1,15 @@
-<%- include('template/header.ejs'), {title}  %> 
+<!-- header -->
+<%- include('template/header.ejs') %>
 
-<h1>404 - NOT FOUND</h1>
+  <!-- rest header -->
+  <link rel="stylesheet" href="./css/nowPlaying.css">
+    <title><%= title %></title>
+  </head>
+  <body id="home">
+
+  <!-- navbar -->
+  <%- include('template/navbar.ejs') %>
+
+  <h1>404 - NOT FOUND</h1>
 
 <%- include('template/footer.ejs')  %> 

@@ -1,4 +1,14 @@
-<%- include('template/header.ejs'), {title}  %> 
+<!-- header -->
+<%- include('template/header.ejs') %>
+
+  <!-- rest header -->
+  <link rel="stylesheet" href="./css/nowPlaying.css">
+    <title><%= title %></title>
+  </head>
+  <body id="home">
+
+  <!-- navbar -->
+  <%- include('template/navbar.ejs') %>
 
 <div class="container-fluid mt-5">
   <h1 class="text-center mb-5">Now playing</h1>
