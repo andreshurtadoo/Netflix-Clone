@@ -1,76 +1,136 @@
-.main{
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;1,200&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* color: #fff; */
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+div{
     position: relative;
 }
 
-.main .main-background img {
+a , .genresName{
+    text-decoration: none;
+    color: #fff;
+}
+
+#main .inner_content img:hover {
+    filter: brightness(25%);
+}
+
+#main .inner_content a:hover {
+    color: rgba(255,255,255,0.7);
+}
+
+
+.absolute {
+    position: absolute;
+}
+
+.inner_content .background-img{
     height: 100vh;
     width: 100%;
-    filter: brightness(40%);
+    filter: brightness(25%);
     position: absolute;
 }
 
-.main .main-poster img{
-    height: 80vh;
-    width: 25%;
-    margin-top: 70px;
-    left: 100px;
-    border-radius: 15px;
-    cursor: pointer;
-    position: absolute;
+/* poster & overview */
+
+.inner_content .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.main .main-poster img, .buttonTaiser:hover {
-    filter: brightness(40%);
+.inner_content .content .information{
+    height: 90vh;
+    width: 90%;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.main .main-poster .info {
-    position: absolute;
+.content .information .poster_wrapper{
+    height: 450px;
+    width: 300px;
+    margin: 5px;
+}
+
+.information .poster_wrapper .poster , .poster-img{
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    transition: 0.5s ease;
+}
+
+.content .information .header_poster_wrapper{
+    height: 450px;
+    width: 900px;
+    margin: 5px;
     color: #fff;
-    font-size: 20px;
-    margin-top: 25rem;
-    left: 35rem;
 }
 
-.main .main-poster .info h1 {
+.header_poster_wrapper .header {
+    padding: 20px;
+}
+
+.header_poster_wrapper .header .title .movieTitle {
+    font-size: 2.2rem;
     font-weight: 700;
 }
 
-.main .main-poster .info span {
-    font-size: 20px;
+.header_poster_wrapper .header .title .date {
+    color: rgba(255,255,255,0.7);
 }
 
-.main .main-poster .info .date, .taiser, .overview{
-    font-weight: lighter;
+.header_poster_wrapper .header .title .facts .genresName{
+    padding-left: 20px;
+    font-weight: 300;
 }
 
-.main .main-poster .info .buttonTaiser{
-    float:right;
-    font-size: 15px;
-    color: #fff;
-    width: auto;
-    height: auto;
-    font-weight: 600;
-    transition: linear .1s;
-    text-decoration: none;
+.header_poster_wrapper .header .title .facts .buttonTaiser {
+    padding-left: 30px;
 }
 
-.subtitle{
-    font-weight: 600;
-    font-size: 1.3em;
+.header_poster_wrapper .header .header_info .tagline{
+    font-style: italic;
+    margin-top: 30px;
 }
 
-.main .main-poster .info ul {
-    list-style: none;
-}
-
-.main .main-poster .info ul li {
-    float: left;
-    padding-left: 50px;
-    font-weight: lighter;
-}
-
-.modal .modal-dialog .modal-content {
-    background: none;
+.header_poster_wrapper .header .header_info .overview p {
+    font-weight: 300;
+    margin-top: 10px;
 }
 
 
+/* modal */
+
+.modal-dialog {
+    max-width: 70%;
+    top: 50px;
+}
+
+.modal-header {
+    border-bottom: none
+}
+
+.btn-close {
+    background-color: rgba(255,255,255);
+    margin: 0;
+}
+
+.modal-content {
+    height: 80vh;
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
