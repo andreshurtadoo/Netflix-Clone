@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/movie.css">
+    <link rel="stylesheet" href="../css/movie.css">
     <title><%= movie.original_title %></title>
 </head>
 <body id="movie">
@@ -48,7 +48,6 @@
                                         <span class="date">(<%= year[0] %>)</span>  
                                     </h2>
                                     <div class="facts">
-                                        <!-- <span class="certification"><%= movie.adult %> </span> -->
                                         <span class="release"><%= movie.release_date %> </span>
                                         <span class="genres">
                                                 <% let genres = movie.genres %> 
@@ -92,16 +91,26 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
+
                 <% teaser.forEach(video => { %> 
-                    
-                    <% if(video.type === 'Teaser' || video.type === 'Trailer'){ %>
-                        <h1>Hay teaser</h1>
-                    <% } else { %>
-                        <h1>No hay teaser</h1>
+                                        
+                    <% if (video.type === 'Teaser' || video.type === 'Trailer') { %>
+                     
+                       <% const key = video.key %>
+                       <% const url = `https://www.youtube.com/embed/${key}` %>
+                       <iframe
+                       id="ytplayer" 
+                       type="text/html" 
+                       width="640" 
+                       height="360"
+                       src="<%= url %> "
+                       frameborder="0"
+                       >
+                       </iframe>
+
                     <% } %>
 
-                <% }) %> 
+                <% }) %>
 
             </div>
           </div>

@@ -2,7 +2,7 @@
 <%- include('template/header.ejs') %>
 
   <!-- rest header -->
-  <link rel="stylesheet" href="./css/nowPlaying.css">
+  <link rel="stylesheet" href="../css/popular.css">
     <title><%= title %></title>
   </head>
   <body id="home">
@@ -11,5 +11,34 @@
   <%- include('template/navbar.ejs') %>
 
   <h1>Peliculas populares</h1>
+
+  <main>
+    <div class="container-fluid mt-5">
+      <div class="row list-card">
+        <!-- card -->
+        <!-- destructurar aqui -->
+        <% movies.forEach(movie => { %>
+          <% let path = movie.backdrop_path %>
+          <% let url = `https://image.tmdb.org/t/p/original${path}` %>  
+
+          <div class="card m-2" style="width: 18rem;">
+            <a href="/movie/<%= movie.id %>" target="_blank">
+              <img src="<%= url %> " class="card-img-top" alt="<%= movie.title %>" >
+            </a> 
+            <div class="card-body">
+              <h5 class="card-title"><%= movie.title %></h5>
+              <span><%= movie.release_date %></span>
+            </div>
+          </div>
+        <% }) %>
+    
+      </div>
+    </div>
+  
+    <div class="d-grid gap-2">
+      <button class="btn bg-primary m-2 text-light" value="1">Show more</button>
+    </div>
+  </main>
+
 
 <%- include('template/footer.ejs')  %> 

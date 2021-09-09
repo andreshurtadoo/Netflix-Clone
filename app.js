@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public'))
 
 app.use('/', api)
 
-app.use((req, res, next) => {
+app.use('*', (req, res) => {
     res.status(404).render('404',{
         title:'404'
     })
