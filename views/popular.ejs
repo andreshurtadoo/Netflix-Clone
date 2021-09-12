@@ -18,11 +18,11 @@
         <!-- card -->
         <!-- destructurar aqui -->
         <% movies.forEach(movie => { %>
-          <% let path = movie.backdrop_path %>
+          <% let path = movie.poster_path %>
           <% let url = `https://image.tmdb.org/t/p/original${path}` %>  
 
           <div class="card m-2" style="width: 18rem;">
-            <a href="/movie/<%= movie.id %>" target="_blank">
+            <a href="/movie/<%= movie.id %>?language=en-US" target="_blank">
               <img src="<%= url %> " class="card-img-top" alt="<%= movie.title %>" >
             </a> 
             <div class="card-body">
@@ -35,10 +35,38 @@
       </div>
     </div>
   
-    <div class="d-grid gap-2">
-      <button class="btn bg-primary m-2 text-light" value="1">Show more</button>
+    <div class="d-grid gap-2 m-2 button">
+        
     </div>
   </main>
 
 
 <%- include('template/footer.ejs')  %> 
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const { page } = getUrlVars()
+      let numberPage = parseInt(page)
+      numberPage += 1
+      const btn = document.getElementsByClassName('button')[0]
+      btn.innerHTML = `<a href="/movie?language=es&page=${numberPage}" class="btn btn-primary text-light url">Show more</a>`
+      
+    })
+
+    const getUrlVars = () => {
+      let vars = {}
+      window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+      });
+      return vars;
+    }
+
+    // var url = window.location.href
+    // var url2 = url.split('?')
+    // var path = url2[1]
+    // var number = path.split('=')
+    // var n = number[1]
+    // console.log(n)
+
+</script>

@@ -1,0 +1,65 @@
+<!-- header -->
+<%- include('template/header.ejs') %>
+
+  <!-- rest header -->
+  <link rel="stylesheet" href="../css/popular.css">
+    <title><%= title %></title>
+  </head>
+  <body id="home">
+
+  <!-- navbar -->
+  <%- include('template/navbar.ejs') %>
+
+  <h1>series populares</h1>
+
+  <main>
+    <div class="container-fluid mt-5">
+      <div class="row list-card">
+        <!-- card -->
+        <!-- destructurar aqui -->
+        <% tvs.forEach(tvs => { %>
+          <% let path = tvs.poster_path %>
+          <% let url = `https://image.tmdb.org/t/p/original${path}` %>  
+
+          <div class="card m-2" style="width: 18rem;">
+            <a href="/movie/<%= tvs.id %>?language=en-US" target="_blank">
+              <img src="<%= url %> " class="card-img-top" alt="<%= tvs.name %>" >
+            </a> 
+            <div class="card-body">
+              <h5 class="card-title"><%= tvs.name %></h5>
+              <span><%= tvs.first_air_date %></span>
+            </div>
+          </div>
+        <% }) %>
+    
+      </div>
+    </div>
+  
+    <div class="d-grid gap-2 m-2 button">
+        
+    </div>
+  </main>
+
+
+<%- include('template/footer.ejs')  %> 
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const { page } = getUrlVars()
+    let numberPage = parseInt(page)
+    numberPage += 1
+    const btn = document.getElementsByClassName('button')[0]
+    btn.innerHTML = `<a href="/tv?language=es&page=${numberPage}" class="btn btn-primary text-light url">Show more</a>`
+    
+  })
+
+  const getUrlVars = () => {
+    let vars = {}
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
+
+</script>
