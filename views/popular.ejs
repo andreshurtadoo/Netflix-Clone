@@ -2,7 +2,7 @@
 <%- include('template/header.ejs') %>
 
   <!-- rest header -->
-  <link rel="stylesheet" href="../css/popular.css">
+    <link rel="stylesheet" href="../css/popular.css">
     <title><%= title %></title>
   </head>
   <body id="home">
@@ -13,16 +13,17 @@
   <h1>Peliculas populares</h1>
 
   <main>
+    
+    <!-- card -->
+    <!-- destructurar aqui! -->
     <div class="container-fluid mt-5">
       <div class="row list-card">
-        <!-- card -->
-        <!-- destructurar aqui -->
         <% movies.forEach(movie => { %>
           <% let path = movie.poster_path %>
           <% let url = `https://image.tmdb.org/t/p/original${path}` %>  
 
-          <div class="card m-2" style="width: 18rem;">
-            <a href="/movie/<%= movie.id %>?language=en-US" target="_blank">
+          <div class="card m-2" style="width: 14rem;">
+            <a href="/movie/<%= movie.id %>?language=en" target="_blank">
               <img src="<%= url %> " class="card-img-top" alt="<%= movie.title %>" >
             </a> 
             <div class="card-body">
@@ -31,15 +32,13 @@
             </div>
           </div>
         <% }) %>
-    
       </div>
     </div>
   
-    <div class="d-grid gap-2 m-2 button">
-        
-    </div>
+    <div class="d-grid gap-2 m-2 blue"></div>
+    
+    <div class="d-grid gap-2 m-2 red"></div>
   </main>
-
 
 <%- include('template/footer.ejs')  %> 
 
@@ -47,12 +46,25 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const { page } = getUrlVars()
+      const number = parseInt(page)
       let numberPage = parseInt(page)
-      numberPage += 1
-      const btn = document.getElementsByClassName('button')[0]
-      btn.innerHTML = `<a href="/movie?language=es&page=${numberPage}" class="btn btn-primary text-light url">Show more</a>`
+      let btnBlue = numberPage += 1
+      let btnRed = numberPage -= 2
+
+      if (number > 0) {
+        const btn = document.getElementsByClassName('blue')[0]
+        btn.innerHTML = `<a href="/movie?language=es&page=${btnBlue}" class="btn btn-primary text-light url">Show more</a>`
+        
+      }
+      
+      if(number > 1) {
+        const btn2 = document.getElementsByClassName('red')[0]
+        btn2.innerHTML = `<a href="/movie?language=es&page=${btnRed}" class="btn btn-danger text-light url">Back</a>`
+
+      }
       
     })
+
 
     const getUrlVars = () => {
       let vars = {}
@@ -61,12 +73,5 @@
       });
       return vars;
     }
-
-    // var url = window.location.href
-    // var url2 = url.split('?')
-    // var path = url2[1]
-    // var number = path.split('=')
-    // var n = number[1]
-    // console.log(n)
 
 </script>

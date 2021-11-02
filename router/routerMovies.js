@@ -4,9 +4,14 @@ const moviesCtrl = require('../controller/getAllMovies')
 
 api.get('/', moviesCtrl.setAllMovies)
 
+// acomodar variable de entorno
+
+// ruta de pelicula
 api.get('/movie/:id([0-9]{6})?', moviesCtrl.setPopularMovies)
 
-api.get('/tv/:id?', moviesCtrl.setPopularTv)
+// ruta de series
+api.get('/tv/:id([0-9])?', moviesCtrl.setPopularTv)
+
 
 api.get('/search', moviesCtrl.search)
 

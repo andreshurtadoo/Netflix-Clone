@@ -6,6 +6,7 @@ const api_key = process.env.API_KEY;
 
 // GET FUNCTION
 
+// saca todos los elementos 
 const getElements = (kind, type, language, page) => {
     const url = `${url_path}/3/${kind}/${type}?api_key=${api_key}&language=${language}&page=${page}`
     return fetch(url)
@@ -14,6 +15,7 @@ const getElements = (kind, type, language, page) => {
     .catch(e => console.log(e))
 }
 
+// saca solo un elemento
 const getOneElement = (kind, id, language) => {
     const url = `${url_path}/3/${kind}/${id}?api_key=${api_key}&language=${language}`
     return fetch(url)
@@ -22,6 +24,7 @@ const getOneElement = (kind, id, language) => {
     .catch(e => console.log(e))
 }
 
+// saca el trailer
 const getTeaser = (id, language) => {
     const url = `${url_path}/3/movie/${id}/videos?api_key=${api_key}&language=${language}`
     return fetch(url)
@@ -34,6 +37,7 @@ const getTeaser = (id, language) => {
 
 // SET FUNCTION
 
+// agrega todos los resultado al index
 async function setAllMovies (req, res) {
     const { language='en' , page=1 } = req.query
 
@@ -56,9 +60,7 @@ async function setAllMovies (req, res) {
     })
 }
 
-
-
-
+// agrega la pelicular a la pagina de peliculas
 async function setPopularMovies (req, res) {
     const { id } = req.params
     const { language ='en-US' , page=1 } = req.query
@@ -82,6 +84,7 @@ async function setPopularMovies (req, res) {
     }
 }
 
+// agrega las series en la pagina de series
 async function setPopularTv (req, res) {
     const { id } = req.params
     const { language='en', page=1 } = req.query
@@ -102,9 +105,6 @@ async function setPopularTv (req, res) {
         })
     }
 }
-
-
-
 
 
 function search (req, res) {
