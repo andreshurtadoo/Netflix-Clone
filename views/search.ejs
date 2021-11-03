@@ -1,8 +1,8 @@
 <!-- header -->
 <%- include('template/header.ejs') %>
 
-  <!-- rest header -->
-  <link rel="stylesheet" href="./css/nowPlaying.css">
+    <!-- rest header -->
+    <link rel="stylesheet" href="./css/nowPlaying.css">
     <title><%= title %></title>
   </head>
   <body id="home">
@@ -12,38 +12,10 @@
 
   <h1> Este es el buscador </h1>
 
-  <button class="btn btn-primary text-light">
-    
-  </button>
 
 
 <%- include('template/footer.ejs')  %> 
 
 <script>
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const { page } = getUrlVars()
-    let n = parseInt(page)
-    let n2 = n + 1
-    const button = document.getElementsByClassName('btn')[0]
-    let html = `<a href="/search?language=en-US&page=${n2}">send</a>`
-    button.innerHTML = html
-
-  })
-
-  const getUrlVars = () => {
-    let vars = {}
-    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-      vars[key] = value;
-    });
-    return vars;
-  }
-
-  // var url = window.location.href
-  // var url2 = url.split('?')
-  // var path = url2[1]
-  // var number = path.split('=')
-  // var n = number[1]
-  // console.log(n)
 
 </script>

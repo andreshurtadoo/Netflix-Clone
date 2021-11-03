@@ -3,6 +3,14 @@ const bodyParser = require('body-parser')
 const app = express()
 const api = require('./router/routerMovies')
 
+// cors
+const cors = require('cors')
+var corsOptions = {
+    origin: '*', // Reemplazar con dominio
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
+
 // auth user - login and register
 const auth = require('./router/auth')
 
