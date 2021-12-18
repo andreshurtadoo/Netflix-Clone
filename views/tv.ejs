@@ -79,6 +79,41 @@
         </section>
     </main>
 
+        <!-- Modal -->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Replay teaser</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+    
+                    <% teaser.forEach((video, index) => { %> 
+    
+                        <!-- acomodar url name -->
+                        <% if (index === 0) { %>
+                            <% const key = video.key %>
+                            <% const url = `https://www.youtube.com/embed/${key}` %>
+                            <iframe
+                            id="ytplayer" 
+                            type="text/html" 
+                            width="640" 
+                            height="360"
+                            src="<%= url %> "
+                            frameborder="0"
+                            >
+                            </iframe>
+                        <% } %>
+    
+                    <% }) %>
+    
+                </div>
+              </div>
+            </div>
+        </div>
+
     <script src="https://kit.fontawesome.com/8d04d5d86b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>

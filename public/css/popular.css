@@ -1,0 +1,12 @@
+.card-img-top:hover {
+    transition: 0.3s ease;
+    filter: brightness(50%);
+}
+
+.list-card{
+    --bs-gutter-x: 0;
+}
+
+.card-body{
+    padding: 10px;
+}

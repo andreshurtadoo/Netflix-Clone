@@ -1,8 +1,6 @@
 <!-- header -->
 <%- include('template/header.ejs') %>
-
-    <!-- rest header -->
-    <link rel="stylesheet" href="./css/nowPlaying.css">
+    <link rel="stylesheet" href="./css/search.css">
     <title><%= title %></title>
   </head>
   <body id="home">
@@ -10,12 +8,70 @@
   <!-- navbar -->
   <%- include('template/navbar.ejs') %>
 
-  <h1> Este es el buscador </h1>
+  <!-- <div class="container mt-5">
+    <h1 class="text-center mb-5">Search</h1>
+    <input id="search" type="text" class="form-control" placeholder="Search for a movie or tv show" onkeyup="searchMovie()">
+    <div class="row list-card">
 
+    </div>
+  </div> -->
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-5">Search</h1>
+    <form action="/search" method="get">
+
+      <input type="text" name="query" class="form-control" placeholder="Search for a movie or tv show">
+      <input type="submit" value="query">
+      
+    </form>
+  </div>
+
+  <div class="container">
+    <% movies.forEach(element => { %>
+         <% let path = element.poster_path %> 
+         <% let url = `https://image.tmdb.org/t/p/original${path}` %>
+        <ul>
+          <li>
+            <div class="card mb-3" style="">
+              <div class="row g-0">
+
+                <div class="col-md-4">
+                 <img src="<%= url %>" class="img-fluid rounded-start" alt="...">
+                </div>
+
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"> <%= element.title %> </h5>
+                    <span> <%= element.release_date %> </span>
+                    <div class="overview" >
+                      <p class="overP" > <%= element.overview %> </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </li>
+        </ul>
+    <% }) %>
+  </div>
 
 
 <%- include('template/footer.ejs')  %> 
 
-<script>
+<!-- <script>
+  const URL_PATH = 'https://api.themoviedb.org';
+  const API_KEY = '18f21ca3a155f61b7686ee78ec67a6e9';
 
-</script>
+  const searchMovie = () => {
+    const textSearch = document.getElementById('search').value;
+    if (textSearch.length < 3) { return }
+    
+    const movies = getMovie(textSearch)
+  }
+  
+  const getMovie = (textSearch) => {
+    const movie = `${URL_PATH}/3/search/movie?api_key=${API_KEY}&language=en-US&query=${textSearch}&page=1&include_adult=true`
+  }
+
+</script> -->

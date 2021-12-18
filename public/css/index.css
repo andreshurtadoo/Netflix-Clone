@@ -62,8 +62,12 @@ h2{
     height: 100%;
     width: 100%;
 }
-
-
+ .wrapper .item:hover{
+    transition: all 300ms;
+    filter: brightness(50%);
+    transform: scale(1.15);
+    margin: 20px;
+ }
 
 
 

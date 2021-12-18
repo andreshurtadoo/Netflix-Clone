@@ -27,7 +27,7 @@
             </a> 
             <div class="card-body">
               <h5 class="card-title"><%= tvs.name %></h5>
-              <span><%= tvs.first_air_date %></span>
+              <!-- <span><%= tvs.first_air_date %></span> -->
             </div>
           </div>
         <% }) %>
@@ -55,13 +55,13 @@
 
     if (number > 0) {
       const btn = document.getElementsByClassName('blue')[0]
-      btn.innerHTML = `<a href="/movie?language=es&page=${btnBlue}" class="btn btn-primary text-light url">Show more</a>`
+      btn.innerHTML = `<a href="/tv?language=es&page=${btnBlue}" class="btn btn-primary text-light url">Show more</a>`
         
     }
       
     if(number > 1) {
       const btn2 = document.getElementsByClassName('red')[0]
-      btn2.innerHTML = `<a href="/movie?language=es&page=${btnRed}" class="btn btn-danger text-light url">Back</a>`
+      btn2.innerHTML = `<a href="/tv?language=es&page=${btnRed}" class="btn btn-danger text-light url">Back</a>`
 
     }
       

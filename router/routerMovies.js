@@ -10,9 +10,9 @@ api.get('/', moviesCtrl.setAllMovies)
 api.get('/movie/:id([0-9]{6})?', moviesCtrl.setPopularMovies)
 
 // ruta de series
-api.get('/tv/:id([0-9])?', moviesCtrl.setPopularTv)
+api.get('/tv/:id?', moviesCtrl.setPopularTv)
 
 
-api.get('/search', moviesCtrl.search)
+api.get('/search/:name?', moviesCtrl.search)
 
 module.exports = api

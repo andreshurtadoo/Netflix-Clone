@@ -1,3 +1,4 @@
+const { response } = require('express');
 const fetch = require('node-fetch');
 require('dotenv').config()
 
@@ -25,14 +26,23 @@ const getOneElement = (kind, id, language) => {
 }
 
 // saca el trailer
-const getTeaser = (id, language) => {
-    const url = `${url_path}/3/movie/${id}/videos?api_key=${api_key}&language=${language}`
+const getTeaser = (kind, id, language) => {
+    const url = `${url_path}/3/${kind}/${id}/videos?api_key=${api_key}&language=${language}`
     return fetch(url)
     .then(response => response.json())
     .then(result => result.results)
     .catch(e => console.log(e))
 }
 
+// saca la peli que estas buscando
+function getSearchMovies (name) {
+    const url = `${url_path}/3/search/movie?api_key=${api_key}&language=es-US&query=${name}&page=1&include_adult=false`
+    return fetch(url)
+    .then(response => response.json())
+    .then(result => result.results)
+    .catch(e => console.log('problema en el url'))
+    
+}
 
 
 // SET FUNCTION
@@ -74,7 +84,7 @@ async function setPopularMovies (req, res) {
         })
     }else{
         const movie = await getOneElement('movie', id, language)
-        const teaser = await getTeaser(id, language)
+        const teaser = await getTeaser('movie', id, language)
         res
         .status(200)
         .render('movie',{
@@ -98,21 +108,26 @@ async function setPopularTv (req, res) {
         })
     }else{
         const tv = await getOneElement('tv', id, language)
+        const teaser = await getTeaser('tv', id, language)
         res
         .status(200)
         .render('tv', {
-            tv
+            tv,
+            teaser
         })
     }
 }
 
-
-function search (req, res) {
+async function search (req, res) {
+    const { query } = req.query
+    const movies = await getSearchMovies(query)
     res
     .status(200)
     .render('search', {
-        title:'Search'
+        movies,
+        title: 'Search'
     })
+    
 }
 
 module.exports = {
