@@ -130,9 +130,21 @@ async function search (req, res) {
     
 }
 
+function information(req, res){
+    // const {query} = req.query
+    res
+    .status(200)
+    .render('aboutMe',{
+        name:'Andres Hurtado',
+        pais:'Venezuela',
+        ci:'29626410'
+    })
+}
+
 module.exports = {
     setAllMovies,
     setPopularMovies,
     setPopularTv,
-    search
+    search,
+    information
 }

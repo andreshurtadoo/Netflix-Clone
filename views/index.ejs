@@ -1,50 +1,19 @@
 <!-- header -->
 <%- include('template/header.ejs') %>
-
-  <!-- resto header -->
   <link rel="stylesheet" href="./css/index.css">
-    <title><%= title %></title>
+  <title><%= title %></title>
   </head>
   <body id="home">
 
   <!-- navbar -->
   <%- include('template/navbar.ejs') %> 
 
-  <!-- carousel -->
-  <div id="carousel-news-movies" class="carousel slide" data-bs-ride="carousel">
-
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <% for( let index = 1; index < 6; index++ ) { %>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %> " aria-label="Slide 1"></button>
-      <% } %>
-    </div>
-
-    <div class="carousel-inner list-news-movies">
-      <% newMovies.forEach((movie, index) => { %>
-        <% const path = movie.backdrop_path %> 
-        <% const url = `https://image.tmdb.org/t/p/original${path}` %>
-
-        <% if (index === 0) { %>
-          <div class="carousel-item active">
-            <a href="/movie/<%= movie.id %>?language=en-US" target="_blank">
-              <img src="<%= url %> " class="d-block w-100" alt="">
-            </a>
-          </div>
-        <% } %>
-
-        <% if (index > 0 && index <= 5 ) { %>
-          <div class="carousel-item">
-            <a href="/movie/<%= movie.id %>?language=en-US" target="_blank"></a>
-            <img src="<%= url %> " class="d-block w-100" alt="">
-          </div>
-        <% } %>
-
-      <% }) %>
-    </div>
-
+  <div class="new_index">
+    <section class="new_style">
+    </section>
   </div>
 
+  
  
   <main>
     <div class="newMovies">
