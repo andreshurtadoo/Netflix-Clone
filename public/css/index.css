@@ -7,27 +7,6 @@ body{
     background-color: #221f1f;
 }
 
-#home #carousel-news-movies {
-    display:flex;
-    justify-content:center;
-}
-
-#home .list-news-movies {
-    height: 55vh;
-    width: 100%;
-}
-
-#home .carousel-item{
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-#home .carousel-item img{
-    height: 100%;
-}
-
 /* main */
 
 h2{
@@ -67,12 +46,6 @@ h2{
 .wrapper .item:hover{
     transition: all 400ms;
     filter: brightness(50%);
-    transform: scale(1.7);
+    /* transform: scale(1.7); */
     /* margin: 15px; */
 }
-
-/* index */
-
-
-
-

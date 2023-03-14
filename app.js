@@ -3,22 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const api = require('./router/routerMovies')
 
-// cors
-const cors = require('cors')
-var corsOptions = {
-    origin: '*', // Reemplazar con dominio
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-app.use(cors(corsOptions));
-
-// auth user - login and register
-const auth = require('./router/auth')
-
-// verication of token
-const verifyToken = require('./middleware/verifyToken')
-
-// private router
-const admin = require('./router/admin')
+const port = process.env.PORT || 3001
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -30,16 +15,12 @@ app.use(bodyParser.json())
 
 app.use('/', api)
 
-// login and register
-app.use('/api', auth)
-
-// private router
-app.use('/api/admin', verifyToken, admin)
-
 app.use('*', (req, res) => {
     res.status(404).render('404',{
         title:'404'
     })
 })
 
-module.exports = app
+app.listen(port, () => {
+    console.log(`Listen server on = localhost:${port}`);
+})

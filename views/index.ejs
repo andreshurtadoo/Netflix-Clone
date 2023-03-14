@@ -7,24 +7,17 @@
 
   <!-- navbar -->
   <%- include('template/navbar.ejs') %> 
-
-  <div class="new_index">
-    <section class="new_style">
-    </section>
-  </div>
-
-  
  
   <main>
     <div class="newMovies">
-      <h2>Upcoming</h2>
+      <h2>Trending</h2>
       <div class="wrapper">
         <% upcoming.forEach(element => { %>
           <% let path = element.poster_path %>
           <% let urlPoster = `https://image.tmdb.org/t/p/original${path}` %>
          
           <div class="item">
-            <a href="/movie/<%= element.id %>?language=en-US" target="_blank">
+            <a href="/movie/<%= element.id %>?language=en-US">
               <img src="<%= urlPoster %> " alt="">
             </a>
           </div>
@@ -40,7 +33,7 @@
           <% let urlPoster = `https://image.tmdb.org/t/p/original${path}` %>
          
           <div class="item">
-            <a href="/tv/<%= element.id %>" target="_blank">
+            <a href="/tv/<%= element.id %>">
               <img src="<%= urlPoster %> " alt="">
             </a>
           </div>

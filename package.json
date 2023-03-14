@@ -1,9 +1,9 @@
 {
   "name": "movies",
   "description": "conection to the api of movie db",
-  "main": "conection.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon conection"
+    "start": "nodemon app"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",

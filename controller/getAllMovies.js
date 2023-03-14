@@ -8,8 +8,8 @@ const api_key = process.env.API_KEY;
 // GET FUNCTION
 
 // saca todos los elementos 
-const getElements = (kind, type, language, page) => {
-    const url = `${url_path}/3/${kind}/${type}?api_key=${api_key}&language=${language}&page=${page}`
+const getElements = (kind, type, page) => {
+    const url = `${url_path}/3/${kind}/${type}?api_key=${api_key}&language=en&page=${page}`
     return fetch(url)
     .then(response => response.json())
     .then(result => result.results)
@@ -17,8 +17,8 @@ const getElements = (kind, type, language, page) => {
 }
 
 // saca solo un elemento
-const getOneElement = (kind, id, language) => {
-    const url = `${url_path}/3/${kind}/${id}?api_key=${api_key}&language=${language}`
+const getOneElement = (kind, id) => {
+    const url = `${url_path}/3/${kind}/${id}?api_key=${api_key}&language=en`
     return fetch(url)
     .then(response => response.json())
     .then(result => result)
@@ -26,8 +26,8 @@ const getOneElement = (kind, id, language) => {
 }
 
 // saca el trailer
-const getTeaser = (kind, id, language) => {
-    const url = `${url_path}/3/${kind}/${id}/videos?api_key=${api_key}&language=${language}`
+const getTeaser = (kind, id) => {
+    const url = `${url_path}/3/${kind}/${id}/videos?api_key=${api_key}&language=en`
     return fetch(url)
     .then(response => response.json())
     .then(result => result.results)
@@ -36,7 +36,7 @@ const getTeaser = (kind, id, language) => {
 
 // saca la peli que estas buscando
 function getSearchMovies (name) {
-    const url = `${url_path}/3/search/movie?api_key=${api_key}&language=es-US&query=${name}&page=1&include_adult=false`
+    const url = `${url_path}/3/search/movie?api_key=${api_key}&language=en-US&query=${name}&page=1&include_adult=false`
     return fetch(url)
     .then(response => response.json())
     .then(result => result.results)
@@ -49,14 +49,15 @@ function getSearchMovies (name) {
 
 // agrega todos los resultado al index
 async function setAllMovies (req, res) {
-    const { language='en' , page=1 } = req.query
+    // const { language='en' , page=1 } = req.query
+    const { page=1 } = req.query
 
-    const newMovies = await getElements('movie', 'now_playing', language, page)
-    const popularMovies = await getElements('movie', 'popular', language, page)
-    const topRated = await getElements('movie', 'top_rated', language, page)
-    const latest = await getElements('movie', 'latest', language, page)
-    const upcoming = await getElements('movie', 'upcoming', language, page)
-    const tv = await getElements('tv', 'popular', language, page)
+    const newMovies = await getElements('movie', 'now_playing', page)
+    const popularMovies = await getElements('movie', 'popular', page)
+    const topRated = await getElements('movie', 'top_rated', page)
+    const latest = await getElements('movie', 'latest', page)
+    const upcoming = await getElements('movie', 'upcoming', page)
+    const tv = await getElements('tv', 'popular', page)
     res
     .status(200)
     .render('index',{
@@ -73,9 +74,9 @@ async function setAllMovies (req, res) {
 // agrega la pelicular a la pagina de peliculas
 async function setPopularMovies (req, res) {
     const { id } = req.params
-    const { language ='en-US' , page=1 } = req.query
+    const { page=1 } = req.query
     if (!id) {        
-        const movies = await getElements('movie', 'popular', language, page)
+        const movies = await getElements('movie', 'popular', page)
         res
         .status(200)
         .render('popular',{
@@ -83,8 +84,8 @@ async function setPopularMovies (req, res) {
             movies
         })
     }else{
-        const movie = await getOneElement('movie', id, language)
-        const teaser = await getTeaser('movie', id, language)
+        const movie = await getOneElement('movie', id)
+        const teaser = await getTeaser('movie', id)
         res
         .status(200)
         .render('movie',{
@@ -97,9 +98,9 @@ async function setPopularMovies (req, res) {
 // agrega las series en la pagina de series
 async function setPopularTv (req, res) {
     const { id } = req.params
-    const { language='en', page=1 } = req.query
+    const { page=1 } = req.query
     if (!id) {
-        const tvs = await getElements('tv', 'popular', language, page)
+        const tvs = await getElements('tv', 'popular', page)
         res
         .status(200)
         .render('popularTv', {
@@ -107,8 +108,8 @@ async function setPopularTv (req, res) {
             tvs
         })
     }else{
-        const tv = await getOneElement('tv', id, language)
-        const teaser = await getTeaser('tv', id, language)
+        const tv = await getOneElement('tv', id)
+        const teaser = await getTeaser('tv', id)
         res
         .status(200)
         .render('tv', {
