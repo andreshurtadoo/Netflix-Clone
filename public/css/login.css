@@ -1,0 +1,11 @@
+body{
+    background-color: #e5383b;
+}
+
+.padre{
+    background-color: #fafafa;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px solid #ccc;
+    text-align: center;
+}
