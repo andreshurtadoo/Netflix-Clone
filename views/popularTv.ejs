@@ -22,12 +22,13 @@
           <% let url = `https://image.tmdb.org/t/p/original${path}` %>  
 
           <div class="card m-2" style="width: 14rem;">
-            <a href="/tv/<%= tvs.id %>?language=en">
+            <a href="/tv/<%= tvs.id %>">
               <img src="<%= url %> " class="card-img-top" alt="<%= tvs.name %>" >
             </a> 
             <div class="card-body">
-              <h5 class="card-title"><%= tvs.name %></h5>
-              <!-- <span><%= tvs.first_air_date %></span> -->
+              <h5 class="card-title">
+                <a href="<%= url %> "><%= tvs.name %></a>
+              </h5>
             </div>
           </div>
         <% }) %>

@@ -1,20 +1,27 @@
 const express = require('express')
 const api = express.Router()
-const moviesCtrl = require('../controller/getAllMovies')
 
-api.get('/', moviesCtrl.setAllMovies)
+// SETTERS
+const home = require('../controller/home')
+const movie = require('../controller/movie')
+const tv = require('../controller/tv')
+const search = require('../controller/search')
+const aboutMe = require('../controller/aboutMe')
 
-// acomodar variable de entorno
+// RUTA HOME
+api.get('/', home.setData)
 
-// ruta de pelicula
-api.get('/movie/:id([0-9]{6})?', moviesCtrl.setPopularMovies)
+// RUTA MOVIES AND MOVIE_ID => acomodar variable de entorno
+api.get('/movie/:id([0-9]{6})?', movie.setPopularMovies)
 
-// ruta de series
-api.get('/tv/:id?', moviesCtrl.setPopularTv)
+// RUTA TV
+api.get('/tv/:id?', tv.setPopularTv)
 
-api.get('/search/:name?', moviesCtrl.search)
+// RUTA SEARCH
+api.get('/search/:name?', search.search)
 
-// ruta information
-api.get('/information/', moviesCtrl.information)
+// RUTA ABOUT_ME
+api.get('/information/', aboutMe.information)
 
+// EXPORT
 module.exports = api

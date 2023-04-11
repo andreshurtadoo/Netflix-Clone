@@ -23,11 +23,13 @@
           <% let url = `https://image.tmdb.org/t/p/original${path}` %>  
 
           <div class="card m-2 poster" style="width: 14rem; height: auto;">
-            <a href="/movie/<%= movie.id %>?language=en">
+            <a href="/movie/<%= movie.id %>">
               <img src="<%= url %> " class="card-img-top" alt="<%= movie.title %>" >
             </a> 
             <div class="card-body">
-              <h5 class="card-title"><%= movie.title %></h5>
+              <h5 class="card-title">
+                <a href="/movie/<%= movie.id %>"><%= movie.title %></a>
+              </h5>
               <!-- <span><%= movie.release_date %></span> -->
             </div>
           </div>
