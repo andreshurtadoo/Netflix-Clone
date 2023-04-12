@@ -6,3 +6,8 @@ You can search your favorite movies or tv show, see the trailer and all the info
 
 ## MOVIE
 ![movie](https://github.com/andreshurtadoo/MovieApp/blob/main/imgReadme/movie.png)
+
+## Run the app with the next command line
+```
+nmp start
+```
