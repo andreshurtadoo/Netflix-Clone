@@ -18,9 +18,9 @@ api.get('/movie/:id', (req, res) => {
     const { id } = req.params
 
     // Validamos que sean exactamente 6 dígitos numéricos
-    if (!/^[0-9]{6}$/.test(id)) {
-        return res.status(400).json({ error: 'El ID de la película debe tener 6 dígitos numéricos.' });
-    }
+    // if (!/^[0-9]{6}$/.test(id)) {
+    //     return res.status(400).json({ error: 'El ID de la película debe tener 6 dígitos numéricos.' });
+    // }
 
     return movie.setPopularMovies(req, res);
 })
@@ -32,9 +32,9 @@ api.get('/tv/:id', (req, res) => {
     const { id } = req.params
 
     // Validamos que sean exactamente 6 dígitos numéricos
-    if (!/^[0-9]{6}$/.test(id)) {
-        return res.status(400).json({ error: 'El ID de la serie debe tener 6 dígitos numéricos.' });
-    }
+    // if (!/^[0-9]{6}$/.test(id)) {
+    //     return res.status(400).json({ error: 'El ID de la serie debe tener 6 dígitos numéricos.' });
+    // }
 
     return tv.setPopularTv(req, res);
 })
