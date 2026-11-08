@@ -18,7 +18,7 @@ a , .genresName{
 }
 
 #main .inner_content img:hover {
-    filter: brightness(25%);
+    filter: brightness(90%);
 }
 
 #main .inner_content a:hover {
@@ -33,7 +33,7 @@ a , .genresName{
 .inner_content .background-img{
     height: 100vh;
     width: 100%;
-    filter: brightness(25%);
+    filter: brightness(65%);
     position: absolute;
 }
 
