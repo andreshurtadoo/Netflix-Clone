@@ -1,46 +1,67 @@
 <!-- header -->
 <%- include('template/header.ejs') %>
   <link rel="stylesheet" href="./css/index.css">
-  <title><%= title %></title>
+  <title>
+    <%= title %>
+  </title>
   </head>
+
   <body id="home">
+    <!-- navbar -->
+    <%- include('template/navbar.ejs') %>
 
-  <!-- navbar -->
-  <%- include('template/navbar.ejs') %> 
- 
-  <main>
-    <div class="newMovies">
-      <h2>Trending</h2>
-      <div class="wrapper">
-        <% upcoming.forEach(element => { %>
-          <% let path = element.poster_path %>
-          <% let urlPoster = `https://image.tmdb.org/t/p/original${path}` %>
-         
-          <div class="item">
-            <a href="/movie/<%= element.id %>">
-              <img src="<%= urlPoster %> " alt="">
-            </a>
+      <main>
+        <div class="newMovies">
+          <h2>Trending Movies</h2>
+
+          <div class="slider-container">
+            <!-- Botón Izquierdo -->
+            <button class="slider-btn left-btn" aria-label="Anterior">&#10094;</button>
+
+            <div class="wrapper">
+              <% upcoming.forEach(element=> { %>
+                <% let path=element.poster_path %>
+                  <% let urlPoster=`https://image.tmdb.org/t/p/original${path}` %>
+
+                    <div class="item">
+                      <a href="/movie/<%= element.id %>">
+                        <img src="<%= urlPoster %> " alt="">
+                      </a>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <!-- Botón Derecho -->
+            <button class="slider-btn right-btn" aria-label="Siguiente">&#10095;</button>
           </div>
-        <% }) %>
-      </div>
-    </div>
+        </div>
 
-    <div class="newMovies">
-      <h2>Tv</h2>
-      <div class="wrapper">
-        <% tv.forEach(element => { %>
-          <% let path = element.poster_path %>
-          <% let urlPoster = `https://image.tmdb.org/t/p/original${path}` %>
-         
-          <div class="item">
-            <a href="/tv/<%= element.id %>">
-              <img src="<%= urlPoster %> " alt="">
-            </a>
+        <div class="newMovies">
+          <h2>TV Shows</h2>
+
+          <div class="slider-container">
+            <!-- Botón Izquierdo -->
+            <button class="slider-btn left-btn" aria-label="Anterior">&#10094;</button>
+            <div class="wrapper">
+              <% tv.forEach(element=> { %>
+                <% let path=element.poster_path %>
+                  <% let urlPoster=`https://image.tmdb.org/t/p/original${path}` %>
+
+                    <div class="item">
+                      <a href="/tv/<%= element.id %>">
+                        <img src="<%= urlPoster %> " alt="">
+                      </a>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <!-- Botón Derecho -->
+            <button class="slider-btn right-btn" aria-label="Siguiente">&#10095;</button>
           </div>
-        <% }) %>
-      </div>
-    </div>
-  </main>
+        </div>
+      </main>
 
-  <!-- footer -->
-<%- include('template/footer.ejs')  %> 
+      <script src="./index.js"></script>
+
+      <!-- footer -->
+      <%- include('template/footer.ejs') %>
