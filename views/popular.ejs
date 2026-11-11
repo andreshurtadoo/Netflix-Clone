@@ -10,9 +10,8 @@
   <!-- navbar -->
   <%- include('template/navbar.ejs') %>
 
-  <h1>Popular Movies</h1>
-
-  <main>
+  <main class="newMovies">
+    <h1>Popular Movies</h1>
     
     <!-- card -->
     <!-- destructurar aqui! -->
@@ -24,7 +23,7 @@
 
           <div class="card m-2 poster" style="width: 14rem; height: auto;">
             <a href="/movie/<%= movie.id %>">
-              <img src="<%= url %> " class="card-img-top" alt="<%= movie.title %>" >
+              <img src="<%= url %> " class="card-img-top" alt="<%= movie.title %>" loading="lazy" decoding="async">
             </a> 
             <div class="card-body">
               <h5 class="card-title">
@@ -55,7 +54,7 @@
 
       if (number > 0) {
         const btn = document.getElementsByClassName('blue')[0]
-        btn.innerHTML = `<a href="/movie?language=es&page=${btnBlue}" class="btn btn-primary text-light url">Show more</a>`
+        btn.innerHTML = `<a href="/movie?language=es&page=${btnBlue}" class="btn btn-dark text-light url">Show more</a>`
         
       }
       

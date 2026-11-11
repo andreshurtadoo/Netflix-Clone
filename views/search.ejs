@@ -1,14 +1,17 @@
 <!-- header -->
 <%- include('template/header.ejs') %>
-    <link rel="stylesheet" href="../css/search.css">
-    <title><%= title %></title>
+  <link rel="stylesheet" href="../css/search.css">
+  <title>
+    <%= title %>
+  </title>
   </head>
+
   <body id="home">
 
-  <!-- navbar -->
-  <%- include('template/navbar.ejs') %>
+    <!-- navbar -->
+    <%- include('template/navbar.ejs') %>
 
-  <!-- <div class="container mt-5">
+      <!-- <div class="container mt-5">
     <h1 class="text-center mb-5">Search</h1>
     <input id="search" type="text" class="form-control" placeholder="Search for a movie or tv show" onkeyup="searchMovie()">
     <div class="row list-card">
@@ -16,51 +19,56 @@
     </div>
   </div> -->
 
-  <div class="container mt-5">
-    <h1 class="text-center mb-5">Search</h1>
-    <button><i class="fas fa-file-video"></i></button>
-    <form action="/search" method="get">
+      <div class="container mt-5">
+        <h1 class="text-center mb-5" style="color: white;">Search</h1>
+        <!-- <button><i class="fas fa-file-video"></i></button> -->
 
-      <input type="text" name="query" class="form-control" placeholder="Search for a movie or tv show">
-      <input type="submit" value="query">
-      
-    </form>
-  </div>
+        <form action="/search" method="get">
+          <input type="text" name="query" class="form-control" placeholder="Search for a movie or tv show">
+          <!-- <input type="submit" value="query"> -->
+        </form>
+      </div>
+      <br>
 
-  <div class="container">
-    <% movies.forEach(element => { %>
-         <% let path = element.poster_path %> 
-         <% let url = `https://image.tmdb.org/t/p/original${path}` %>
-        <ul>
-          <li>
-            <div class="card mb-3" style="">
-              <div class="row g-0">
+      <div class="container-fluid mt-5">
+        <div class="row list-card">
+          <% movies.forEach(element=> { %>
+            <% let path=element.poster_path %>
+              <% let url=`https://image.tmdb.org/t/p/original${path}` %>
 
-                <div class="col-md-4">
-                 <img src="<%= url %>" class="img-fluid rounded-start" alt="...">
-                </div>
+                <div class="card mb-2 poster" style="max-width: 540px; padding: 2rem; margin: 1rem; border-radius: 10px;">
+                  <div class="row g-0">
 
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title"> <%= element.title %> </h5>
-                    <span> <%= element.release_date %> </span>
-                    <div class="overview" >
-                      <p class="overP" > <%= element.overview %> </p>
+                    <div class="col-md-4">
+                      <img src="<%= url %>" class="img-fluid rounded-start" alt="...">
                     </div>
+
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <%= element.title %>
+                        </h5>
+                        <span>
+                          <%= element.release_date %>
+                        </span>
+                        <div class="overview">
+                          <p class="overP">
+                            <%= element.overview %>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
-
-              </div>
-            </div>
-          </li>
-        </ul>
-    <% }) %>
-  </div>
+                <% }) %>
+        </div>
+      </div>
 
 
-<%- include('template/footer.ejs')  %> 
+      <%- include('template/footer.ejs') %>
 
-<!-- <script>
+        <!-- <script>
   const URL_PATH = 'https://api.themoviedb.org';
   const API_KEY = '18f21ca3a155f61b7686ee78ec67a6e9';
 

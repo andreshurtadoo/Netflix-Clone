@@ -10,9 +10,9 @@
   <!-- navbar -->
   <%- include('template/navbar.ejs') %>
 
-  <h1>Popular TV Shows</h1>
+  <main class="newMovies">
+    <h1>Popular TV Shows</h1>
 
-  <main>
     <div class="container-fluid mt-5">
       <div class="row list-card">
         <!-- card -->
@@ -56,7 +56,7 @@
 
     if (number > 0) {
       const btn = document.getElementsByClassName('blue')[0]
-      btn.innerHTML = `<a href="/tv?language=es&page=${btnBlue}" class="btn btn-primary text-light url">Show more</a>`
+      btn.innerHTML = `<a href="/tv?language=es&page=${btnBlue}" class="btn btn-dark text-light url">Show more</a>`
         
     }
       
