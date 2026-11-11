@@ -3,7 +3,7 @@
   "description": "conection to the api of movie db",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node app"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
